@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rdas
+  namespace: ${NAMESPACE}
+  labels:
+    app.kubernetes.io/name: rdas
+  annotations:
+    kubernetes.io/ingress.class: ${INGRESS_CLASS}
+spec:
+  rules:
+    - host: ${INGRESS_HOST}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: rdas
+                port:
+                  name: http
