@@ -41,20 +41,6 @@ The API starts on the default Spring Boot port:
 http://localhost:8080
 ```
 
-## Configuration
-
-The main runtime settings are in `src/main/resources/application.yaml`.
-
-| Property | Default | Purpose |
-| --- | --- | --- |
-| `rdas.soap.endpoint` | `https://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso` | CountryInfo SOAP endpoint |
-| `rdas.soap.namespace-uri` | `http://www.oorsprong.org/websamples.countryinfo` | SOAP payload namespace |
-| `rdas.cache.ttl` | `24h` | Freshness window for loaded country data |
-| `rdas.cache.snapshot-path` | `./data/countries-snapshot.json` | Last-known-good snapshot file |
-| `rdas.cache.stale-threshold` | `26h` | Health threshold for stale cache age |
-| `rdas.refresh.startup-enabled` | `true` | Load data on application startup |
-| `rdas.refresh.scheduled-enabled` | `true` | Enable scheduled cache refresh |
-| `rdas.refresh.fixed-delay` | `24h` | Scheduled refresh interval |
 
 ## Documentation
 
@@ -108,3 +94,18 @@ All `/api/v1` responses include `X-Data-Freshness` with one of:
 - `fresh`
 - `stale`
 - `unavailable`
+
+## Configuration
+
+The main runtime settings are in `src/main/resources/application.yaml`.
+
+| Property | Default | Purpose |
+| --- | --- | --- |
+| `rdas.soap.endpoint` | `webservices.oorsprong.org` | CountryInfo SOAP endpoint |
+| `rdas.soap.namespace-uri` | `oorsprong.org` | SOAP payload namespace |
+| `rdas.cache.ttl` | `24h` | Freshness window for loaded country data |
+| `rdas.cache.snapshot-path` | `./data/countries-snapshot.json` | Last-known-good snapshot file |
+| `rdas.cache.stale-threshold` | `26h` | Health threshold for stale cache age |
+| `rdas.refresh.startup-enabled` | `true` | Load data on application startup |
+| `rdas.refresh.scheduled-enabled` | `true` | Enable scheduled cache refresh |
+| `rdas.refresh.fixed-delay` | `24h` | Scheduled refresh interval |
