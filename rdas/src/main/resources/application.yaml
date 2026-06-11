@@ -1,3 +1,28 @@
 spring:
   application:
     name: rdas
+
+  docker:
+    compose:
+      enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+rdas:
+  soap:
+    endpoint: https://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso
+    namespace-uri: http://www.oorsprong.org/websamples.countryinfo
+    connect-timeout: 5s
+    read-timeout: 20s
+  cache:
+    ttl: 24h
+    snapshot-path: ./data/countries-snapshot.json
+    stale-threshold: 26h
+  refresh:
+    startup-enabled: true
+    scheduled-enabled: true
+    fixed-delay: 24h
