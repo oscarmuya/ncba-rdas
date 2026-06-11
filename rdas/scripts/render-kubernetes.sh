@@ -2,11 +2,11 @@
 set -eu
 
 export NAMESPACE="${NAMESPACE:-rdas}"
-export IMAGE="${IMAGE:-rdas:local}"
+export IMAGE="${IMAGE:-ghcr.io/oscarmuya/ncba-rdas/rdas:latest}"
 export IMAGE_PULL_POLICY="${IMAGE_PULL_POLICY:-IfNotPresent}"
 export REPLICAS="${REPLICAS:-1}"
 
-export RDAS_SOAP_ENDPOINT="${RDAS_SOAP_ENDPOINT:-https://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso}"
+export RDAS_SOAP_ENDPOINT="${RDAS_SOAP_ENDPOINT:-http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso}"
 export RDAS_SOAP_NAMESPACE_URI="${RDAS_SOAP_NAMESPACE_URI:-http://www.oorsprong.org/websamples.countryinfo}"
 export RDAS_SOAP_CONNECT_TIMEOUT="${RDAS_SOAP_CONNECT_TIMEOUT:-5s}"
 export RDAS_SOAP_READ_TIMEOUT="${RDAS_SOAP_READ_TIMEOUT:-20s}"

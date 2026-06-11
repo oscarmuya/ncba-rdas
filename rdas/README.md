@@ -65,10 +65,16 @@ The main runtime settings are in `src/main/resources/application.yaml`.
 
 ## Container And Kubernetes
 
+First cd into /rdas.
+
+```
+cd rdas
+```
+
 Build and push an image:
 
 ```bash
-IMAGE=ghcr.io/oscarmuya/ncba-rdas/rdas:0.0.1 PUSH=true ./scripts/build-image.sh
+IMAGE=ghcr.io/oscarmuya/ncba-rdas/rdas:0.0.1 PUSH=false ./scripts/build-image.sh
 ```
 
 Deploy to Kubernetes:
