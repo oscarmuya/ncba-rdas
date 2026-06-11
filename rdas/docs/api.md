@@ -31,7 +31,7 @@ X-Data-Freshness: fresh | stale | unavailable
   },
   "languages": [
     {
-      "code": "SW",
+      "code": "SWA",
       "name": "Swahili"
     }
   ]
@@ -67,7 +67,7 @@ Supported sort fields:
 Example:
 
 ```bash
-curl 'http://localhost:8080/api/v1/countries?search=ken&continent=AF&currency=KES&language=SW&page=0&size=20&sort=name,asc'
+curl 'http://localhost:8080/api/v1/countries?search=ken&continent=AF&currency=KES&language=SWA&page=0&size=20&sort=name,asc'
 ```
 
 Response:
@@ -79,7 +79,7 @@ Response:
       "isoCode": "KE",
       "name": "Kenya",
       "capital": "Nairobi",
-      "flagUrl": "https://example.test/ke.gif",
+      "flagUrl": "http://www.oorsprong.org/WebSamples.CountryInfo/Flags/Kenya.jpg",
       "phoneCode": "254",
       "continent": {
         "code": "AF",
@@ -87,9 +87,14 @@ Response:
       },
       "currency": {
         "code": "KES",
-        "name": "Kenyan Shilling"
+        "name": "Shillings"
       },
-      "languages": []
+      "languages": [
+        {
+          "code": "SWA",
+          "name": "Swahili"
+        }
+      ]
     }
   ],
   "page": 0,

@@ -75,6 +75,7 @@ public class CacheRefreshService {
       retryAttempt.set(0);
       return new RefreshResult(true, trigger, cacheStore.metadata(), null);
     } catch (RuntimeException ex) {
+      log.warn("Country reference refresh failed for trigger={}", trigger, ex);
       log.warn("Country reference refresh failed for trigger={}", trigger);
       loadSnapshotIfCold();
       scheduleRetry();

@@ -14,7 +14,7 @@ management:
 
 rdas:
   soap:
-    endpoint: https://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso
+    endpoint: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso
     namespace-uri: http://www.oorsprong.org/websamples.countryinfo
     connect-timeout: 5s
     read-timeout: 20s
