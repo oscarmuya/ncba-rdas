@@ -44,10 +44,10 @@ http://localhost:8080
 
 ## Documentation
 
-- [API documentation](docs/api.md)
-- [Architecture](docs/architecture.md)
-- [Kubernetes deployment guide](docs/kubernetes-deployment.md)
-- [Kubernetes troubleshooting guide](docs/kubernetes-troubleshooting.md)
+- [API documentation](rdas/docs/api.md)
+- [Architecture](rdas/docs/architecture.md)
+- [Kubernetes deployment guide](rdas/docs/kubernetes-deployment.md)
+- [Kubernetes troubleshooting guide](rdas/docs/kubernetes-troubleshooting.md)
 
 ## Container And Kubernetes
 
