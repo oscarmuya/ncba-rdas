@@ -19,6 +19,7 @@ RDAS is a Spring Boot REST facade over the public CountryInfo SOAP service. It h
 - Maven Wrapper from this repository
 - Docker or another OCI image builder for container builds
 - Kubernetes cluster access for deployment
+- `envsubst`, usually provided by the `gettext` package, for manifest rendering
 
 ## Local Development
 
@@ -40,40 +41,32 @@ The API starts on the default Spring Boot port:
 http://localhost:8080
 ```
 
-## Configuration
-
-The main runtime settings are in `src/main/resources/application.yaml`.
-
-| Property | Default | Purpose |
-| --- | --- | --- |
-| `rdas.soap.endpoint` | `https://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso` | CountryInfo SOAP endpoint |
-| `rdas.soap.namespace-uri` | `http://www.oorsprong.org/websamples.countryinfo` | SOAP payload namespace |
-| `rdas.cache.ttl` | `24h` | Freshness window for loaded country data |
-| `rdas.cache.snapshot-path` | `./data/countries-snapshot.json` | Last-known-good snapshot file |
-| `rdas.cache.stale-threshold` | `26h` | Health threshold for stale cache age |
-| `rdas.refresh.startup-enabled` | `true` | Load data on application startup |
-| `rdas.refresh.scheduled-enabled` | `true` | Enable scheduled cache refresh |
-| `rdas.refresh.fixed-delay` | `24h` | Scheduled refresh interval |
 
 ## Documentation
 
-- [API documentation](/rdas/docs/api.md)
-- [Architecture](/rdas/docs/architecture.md)
-- [Kubernetes deployment guide](/rdas/docs/kubernetes-deployment.md)
-- [Kubernetes troubleshooting guide](/rdas/docs/kubernetes-troubleshooting.md)
+- [API documentation](docs/api.md)
+- [Architecture](docs/architecture.md)
+- [Kubernetes deployment guide](docs/kubernetes-deployment.md)
+- [Kubernetes troubleshooting guide](docs/kubernetes-troubleshooting.md)
 
 ## Container And Kubernetes
+
+First cd into /rdas.
+
+```
+cd rdas
+```
 
 Build and push an image:
 
 ```bash
-IMAGE=registry.example.com/rdas:0.0.1 ./scripts/build-image.sh
+IMAGE=ghcr.io/oscarmuya/ncba-rdas/rdas:0.0.1 PUSH=false ./scripts/build-image.sh
 ```
 
 Deploy to Kubernetes:
 
 ```bash
-IMAGE=registry.example.com/rdas:0.0.1 ./scripts/deploy-kubernetes.sh
+IMAGE=ghcr.io/oscarmuya/ncba-rdas/rdas:0.0.1 ./scripts/deploy-kubernetes.sh
 ```
 
 Remove the deployment:
@@ -101,3 +94,18 @@ All `/api/v1` responses include `X-Data-Freshness` with one of:
 - `fresh`
 - `stale`
 - `unavailable`
+
+## Configuration
+
+The main runtime settings are in `src/main/resources/application.yaml`.
+
+| Property | Default | Purpose |
+| --- | --- | --- |
+| `rdas.soap.endpoint` | `webservices.oorsprong.org` | CountryInfo SOAP endpoint |
+| `rdas.soap.namespace-uri` | `oorsprong.org` | SOAP payload namespace |
+| `rdas.cache.ttl` | `24h` | Freshness window for loaded country data |
+| `rdas.cache.snapshot-path` | `./data/countries-snapshot.json` | Last-known-good snapshot file |
+| `rdas.cache.stale-threshold` | `26h` | Health threshold for stale cache age |
+| `rdas.refresh.startup-enabled` | `true` | Load data on application startup |
+| `rdas.refresh.scheduled-enabled` | `true` | Enable scheduled cache refresh |
+| `rdas.refresh.fixed-delay` | `24h` | Scheduled refresh interval |
