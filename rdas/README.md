@@ -19,6 +19,7 @@ RDAS is a Spring Boot REST facade over the public CountryInfo SOAP service. It h
 - Maven Wrapper from this repository
 - Docker or another OCI image builder for container builds
 - Kubernetes cluster access for deployment
+- `envsubst`, usually provided by the `gettext` package, for manifest rendering
 
 ## Local Development
 
@@ -67,13 +68,13 @@ The main runtime settings are in `src/main/resources/application.yaml`.
 Build and push an image:
 
 ```bash
-IMAGE=registry.example.com/rdas:0.0.1 ./scripts/build-image.sh
+IMAGE=ghcr.io/oscarmuya/ncba-rdas/rdas:0.0.1 PUSH=true ./scripts/build-image.sh
 ```
 
 Deploy to Kubernetes:
 
 ```bash
-IMAGE=registry.example.com/rdas:0.0.1 ./scripts/deploy-kubernetes.sh
+IMAGE=ghcr.io/oscarmuya/ncba-rdas/rdas:0.0.1 ./scripts/deploy-kubernetes.sh
 ```
 
 Remove the deployment:

@@ -9,9 +9,9 @@ import com.loopdfs.rdas.model.internal.LanguageRecord;
 
 public interface SoapCountryClient {
 
-	CountryReferenceData fetchReferenceData();
+  CountryReferenceData fetchReferenceData();
 
-	record CountryReferenceData(List<CountryRecord> countries, List<ContinentRecord> continents,
-			List<CurrencyRecord> currencies, List<LanguageRecord> languages) {
-	}
+  record CountryReferenceData(List<CountryRecord> countries, List<ContinentRecord> continents,
+      List<CurrencyRecord> currencies, List<LanguageRecord> languages) {
+  }
 }
